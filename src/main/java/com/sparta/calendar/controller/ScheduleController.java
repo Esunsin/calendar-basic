@@ -1,12 +1,10 @@
 package com.sparta.calendar.controller;
 
-import com.sparta.calendar.AutoAppConfig;
 import com.sparta.calendar.dto.RequestDto;
 import com.sparta.calendar.dto.ResponseDto;
 import com.sparta.calendar.entity.Schedule;
-import com.sparta.calendar.repository.MemoryScheduleRepository;
 import com.sparta.calendar.service.ScheduleService;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,10 +12,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/schedule")
+@RequiredArgsConstructor
 public class ScheduleController {
 
     //ocp, dip 깨짐.. -> autoAppConfig로 바꿔서 외부에서 의존관계 주입해야함.
-    ScheduleService scheduleService = new ScheduleService(new MemoryScheduleRepository());
+    private final ScheduleService scheduleService;
 
     @PostMapping
     public ResponseDto createSchedule(@RequestBody RequestDto requestDto) {

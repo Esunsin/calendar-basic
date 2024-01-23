@@ -1,6 +1,5 @@
 package com.sparta.calendar.entity;
 
-import com.sparta.calendar.dto.RequestDto;
 import lombok.Getter;
 
 import java.text.SimpleDateFormat;
